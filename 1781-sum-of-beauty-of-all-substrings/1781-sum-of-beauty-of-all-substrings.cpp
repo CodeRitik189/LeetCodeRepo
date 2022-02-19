@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //simple brute force solution easy to understand
     int beautySum(string s) {
         int n=s.size(),sum=0;
         for(int i=0;i<n;i++){
