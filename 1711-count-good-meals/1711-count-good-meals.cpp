@@ -6,6 +6,8 @@ public:
         unordered_map<int,int>um;
         int ct=0;
         for(int i=0;i<del.size();i++){
+            // check with the next power of 2 because the lower number..
+            // ..adding to this cannot result a higher power to the next power...
             if(del[i]==0){um[del[i]]++;continue;}
             if((del[i]&(del[i]-1))==0){ct = (ct+um[0])%num;}
             int check = (1<<(int(log2(del[i]))+1))-del[i];
