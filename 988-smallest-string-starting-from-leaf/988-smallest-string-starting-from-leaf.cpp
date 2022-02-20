@@ -11,7 +11,7 @@
  */
 class Solution{
 public:
-    void fill(TreeNode* root,vector<string>& v,string s){
+    /*void fill(TreeNode* root,vector<string>& v,string s){
         if(!root->left&&!root->right){
             s+=(root->val+'a');
             reverse(s.begin(),s.end());
@@ -22,11 +22,23 @@ public:
         if(root->left)fill(root->left,v,s);
         if(root->right)fill(root->right,v,s);
         return;
+    }*/
+    string ans="";
+    void fill(TreeNode* root,string s){
+        if(!root->left&&!root->right){
+            s+=(root->val+'a');
+            reverse(s.begin(),s.end());
+            ans=(ans==""?s:min(ans,s));
+            return;
+        }
+        s+=(root->val+'a');
+        if(root->left)fill(root->left,s);
+        if(root->right)fill(root->right,s);
+        return;
     }
     string smallestFromLeaf(TreeNode* root) {
         vector<string> v;
-        fill(root,v,"");
-        sort(v.begin(),v.end());
-        return v[0];
+        fill(root,"");
+        return ans;
     }
 };
