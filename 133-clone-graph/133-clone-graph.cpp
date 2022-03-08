@@ -33,9 +33,7 @@ public:
          return visited[node->val]; 
      }
     Node* cloneGraph(Node* node) {
-        if(!node){
-            return NULL;
-        }
+        if(!node){return NULL;}
         vector<Node*>v(101,NULL);
         return clone(node,v);
     }
