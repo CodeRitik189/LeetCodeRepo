@@ -19,7 +19,7 @@ class Solution {
         // Code here
         vector<int>vis(V,0);
         for(int i=0;i<V;i++)
-          if(check(adj,i,-1,vis)){return true;}
+          if((!vis[i])&&check(adj,i,-1,vis)){return true;}
          return false;
     }
 };
