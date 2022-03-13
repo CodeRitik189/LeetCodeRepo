@@ -11,7 +11,6 @@ vector<string> findAllRecipes(vector<string>& rec,vector<vector<string>>& ing,ve
        unordered_map<string,vector<string>>graph;
        unordered_map<string,int>um;
        unordered_map<string,int>vis;
-       set<string>s;
        vector<string>rs;
        vector<string>ans;
        for(int i=0;i<rec.size();i++){graph[rec[i]] = ing[i];}
@@ -24,10 +23,9 @@ vector<string> findAllRecipes(vector<string>& rec,vector<vector<string>>& ing,ve
             }
             if(j==graph[x].size()){
                 um[x]++;
-                s.insert(x);
+                ans.push_back(x);
             } 
        }
-        for(auto x: s){ans.push_back(x);}
         return ans;
     }
 };
