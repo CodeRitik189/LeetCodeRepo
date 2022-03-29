@@ -16,10 +16,10 @@ class Solution {
             v.set(index1,ans2);
             
         }
-        for(int e:v)
-        {
-            System.out.println(e+" ");
-        }
+        // for(int e:v)
+        // {
+        //     System.out.println(e+" ");
+        // }
         for(int i=0;i<26;i++){
             if(v.get(i)!=0){
                 return false;
