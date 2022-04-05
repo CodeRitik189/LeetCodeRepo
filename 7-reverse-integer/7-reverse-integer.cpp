@@ -1,7 +1,7 @@
 class Solution {
 public:
     int reverse(int x) {
-        if(x==INT_MIN||x==0||x==INT_MAX){return 0;}
+        if(x==0){return 0;}
         int sign =  x/abs(x);
         string s = to_string(abs(x));
         int num = 0;
