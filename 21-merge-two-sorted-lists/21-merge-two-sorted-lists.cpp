@@ -11,6 +11,7 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        // could have replaced one list to a complete sorted 
         ListNode* t1 = list1;
         ListNode* t2 = list2;
         ListNode* head=NULL;
