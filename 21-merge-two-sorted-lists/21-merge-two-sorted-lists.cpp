@@ -10,56 +10,51 @@
  */
 class Solution {
 public:
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        if(l1==NULL){
-            return l2;
-        }else if(l2==NULL){
-            return l1;
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        ListNode* t1 = list1;
+        ListNode* t2 = list2;
+        ListNode* head=NULL;
+        ListNode* temp=NULL;
+        while(list1&&list2){
+           if(list1->val<list2->val){
+               if(!head){
+                   head = new ListNode(list1->val);
+                   temp = head;
+               }else{
+                   temp->next = new ListNode(list1->val);
+                   temp = temp->next;
+               }
+               list1 = list1->next;
+           }else{
+               if(!head){
+                   head = new ListNode(list2->val);
+                   temp = head;
+               }else{
+                   temp->next = new ListNode(list2->val);
+                   temp = temp->next;
+               }
+               list2 = list2->next;
+           } 
         }
-        ListNode* temp1= l1;
-        ListNode* temp2 = l2;
-         ListNode* head=NULL;
-         ListNode* tail=NULL;
-        while(temp1!=NULL&&temp2!=NULL){
-          //  cout<<temp1->val<<" "<<temp2->val<<" ";
-            if(temp1->val < temp2->val){
-                if(head==NULL){
-                    head=temp1;
-                    temp1=temp1->next;
-                    tail=head;
-                }else{
-                tail->next=temp1;
-                temp1=temp1->next;
-                tail=tail->next;
-                tail->next=NULL;
-                }
+        while(list1){
+            if(!head){
+                head = new ListNode(list1->val);
+                temp = head;
             }else{
-                if(head==NULL){
-                    head=temp2;
-                    temp2=temp2->next;
-                    tail=head;
-                }else{
-                tail->next=temp2;
-                temp2=temp2->next;
-                tail=tail->next;
-                tail->next=NULL;
-                }
+                temp->next = new ListNode(list1->val);
+                temp = temp->next;
             }
+             list1 = list1->next; 
         }
-        if(temp1==NULL){
-            while(temp2!=NULL){
-                tail->next=temp2;
-                temp2=temp2->next;             
-                tail=tail->next; 
-                tail->next=NULL;
+         while(list2){
+            if(!head){
+                head = new ListNode(list2->val);
+                temp = head;
+            }else{
+                temp->next = new ListNode(list2->val);
+                temp = temp->next;
             }
-        }else if(temp2==NULL){
-            while(temp1!=NULL){
-                tail->next=temp1;
-                temp1=temp1->next;
-                tail=tail->next;
-                tail->next=NULL;
-            }
+             list2 = list2->next; 
         }
         return head;
     }
