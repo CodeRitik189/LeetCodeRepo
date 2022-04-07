@@ -12,17 +12,17 @@ public:
                 ans += s[i];
                 i++;
            }
-           int num = 0;
            //if there is a number calculate this
+           int num = 0;
            while(i<=endi&&(s[i]>='0'&&s[i]<='9')){
               num = num*10 + (s[i]-'0');
               i++;
            }
            //now its confirmed that s[i] is '['
+          //check the closing bracket at j for corresponding opening bracket for i
            int j = i+1;
            int ct = 1;
            
-           //check the closing bracket at j for corresponding i
            while(j<=endi){
                if(s[j]=='['){
                    ct++;
