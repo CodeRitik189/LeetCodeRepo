@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    vector<long>left;
+     vector<long>left;
     vector<long>right;
     void check(TreeNode* root,long dist,int level){
            if(!root){return;}
