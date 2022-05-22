@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    // RRD , RDR, DRR (m-1+n-1 = m+n-2)C(m-1) or (m+n-2)C(n-1) is the ans
     int paths(int m, int n, vector<vector<int>>& dp) {
         if(m==1||n==1){
             return 1;
