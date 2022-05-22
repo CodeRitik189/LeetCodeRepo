@@ -11,9 +11,6 @@ public:
     // both l1 and l2 cover the same m+n distane=ce until reaching the intersection point
     // thats wahy they reach at that at the same time
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        // if(!headA->next)return headA;
-        // if(!headB->next)return headB;
-
         ListNode* l1 = headA;
         ListNode* l2 = headB;
         
