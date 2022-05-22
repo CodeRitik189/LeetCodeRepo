@@ -1,14 +1,18 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int count = 0;
-        long candidate = LONG_MAX;
-        for (int num : nums) {
-            if (count == 0) {
-                candidate = num;
+        int ct = 0,el=-1;
+    
+        for(int i=0;i<nums.size();i++){
+            if(ct==0){
+               el = nums[i];
             }
-            count += (num == candidate) ? 1 : -1;
+            if(el==nums[i]){
+                ct++;
+            }else{
+                ct--;
+            }
         }
-        return candidate;    
+        return el;
     }
 };
