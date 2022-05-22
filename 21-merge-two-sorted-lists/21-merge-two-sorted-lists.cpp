@@ -37,25 +37,33 @@ public:
                list2 = list2->next;
            } 
         }
-        while(list1){
-            if(!head){
-                head = new ListNode(list1->val);
-                temp = head;
-            }else{
-                temp->next = new ListNode(list1->val);
-                temp = temp->next;
-            }
-             list1 = list1->next; 
-        }
-         while(list2){
-            if(!head){
-                head = new ListNode(list2->val);
-                temp = head;
-            }else{
-                temp->next = new ListNode(list2->val);
-                temp = temp->next;
-            }
-             list2 = list2->next; 
+        // while(list1){
+        //     if(!head){
+        //         head = new ListNode(list1->val);
+        //         temp = head;
+        //     }else{
+        //         temp->next = new ListNode(list1->val);
+        //         temp = temp->next;
+        //     }
+        //      list1 = list1->next; 
+        // }
+        //  while(list2){
+        //     if(!head){
+        //         head = new ListNode(list2->val);
+        //         temp = head;
+        //     }else{
+        //         temp->next = new ListNode(list2->val);
+        //         temp = temp->next;
+        //     }
+        //      list2 = list2->next; 
+        // }
+        // return head;
+        if(list1){
+           if(!head) return list1;
+            temp->next = list1;
+        }else{
+            if(!head) return list2;
+            temp->next = list2;
         }
         return head;
     }
