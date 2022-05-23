@@ -1,5 +1,7 @@
 class Solution {
 public:
+    //same as inversion count but looping conditions are different
+    //always remember not to initialise j at every iteration of i just let it be what it is
     int ct = 0;
     
     void merge(vector<int>& nums,int st,int mid, int endi){
