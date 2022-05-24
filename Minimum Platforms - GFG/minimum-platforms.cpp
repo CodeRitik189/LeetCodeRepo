@@ -13,29 +13,46 @@ class Solution{
     int findPlatform(int arr[], int dep[], int n)
     {
     	// Your code here
-     vector<vector<int>>v;
+    //  vector<vector<int>>v;
         
-        for(int i=0;i<n;i++){
-            v.push_back({arr[i],dep[i]});
-        }
+    //     for(int i=0;i<n;i++){
+    //         v.push_back({arr[i],dep[i]});
+    //     }
         
-        sort(v.begin(),v.end());
+    //     sort(v.begin(),v.end());
         
-        multiset<int>s;
-        int ans = 0;
+    //     multiset<int>s;
+    //     int ans = 0;
         
-        for(int i=0 ; i<n ; i++){
-            if(s.size()==0||*s.begin()>=v[i][0]){
-                s.insert(v[i][1]);
-            }else{
-                while(!s.empty()&&*s.begin()<v[i][0]){
-                    s.erase(s.begin());
-                }
-                s.insert(v[i][1]);
-            }
-            if(ans<s.size()){ ans = s.size(); }
-        }
-        return ans;
+    //     for(int i=0 ; i<n ; i++){
+    //         if(s.size()==0||*s.begin()>=v[i][0]){
+    //             s.insert(v[i][1]);
+    //         }else{
+    //             while(!s.empty()&&*s.begin()<v[i][0]){
+    //                 s.erase(s.begin());
+    //             }
+    //             s.insert(v[i][1]);
+    //         }
+    //         if(ans<s.size()){ ans = s.size(); }
+    //     }
+    //     return ans;
+       sort(arr,arr+n);
+       sort(dep,dep+n);
+       
+       int i=0,j=0,plat=0,ans=0;
+       
+       while(i<n&&j<n){
+           
+           if(arr[i]<=dep[j]){
+               plat++;
+               i++;
+           }else{
+               plat--;
+               j++;
+           }
+           ans = max(ans,plat);
+       }
+       return ans;
     }
 };
 
