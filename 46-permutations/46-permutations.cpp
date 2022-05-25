@@ -6,7 +6,7 @@ public:
             ans.push_back(nums);
             return;
         }
-        // here i starts with idx because prev peemutation is also a valid ans
+        // here i starts with idx because prev permutation is also a valid ans
         for(int i = idx; i<nums.size(); i++){
             swap(nums[idx],nums[i]);
             check(nums,idx+1);
