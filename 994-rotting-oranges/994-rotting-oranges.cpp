@@ -22,6 +22,7 @@ public:
     }
     int orangesRotting(vector<vector<int>>& grid) {
         
+        int ct = 0 , crt = 0;
         queue<pair<int,int>>qp;
         
         for(int i=0;i<grid.size();i++){
@@ -29,12 +30,13 @@ public:
                 if(grid[i][j]==2){
                     qp.push({i,j});
                 }
+                if(grid[i][j]!=0){crt++;}
             }
         }
         
-        int ct = 0 ;
         while(!qp.empty()){
            int k = qp.size();
+           crt -= k;
            while(k--){
               pair<int,int>p = qp.front();
               qp.pop();
@@ -43,14 +45,14 @@ public:
             ct++;
         }
         
-        for(int i=0;i<grid.size();i++){
-            for(int j=0;j<grid[0].size();j++){
-                if(grid[i][j]==1){
-                    return -1;
-                }
-            }
-        }
+        // for(int i=0;i<grid.size();i++){
+        //     for(int j=0;j<grid[0].size();j++){
+        //         if(grid[i][j]==1){
+        //             return -1;
+        //         }
+        //     }
+        // }
         
-        return max(0,ct-1);
+        return crt==0?max(0,ct-1):-1;
     }
 };
