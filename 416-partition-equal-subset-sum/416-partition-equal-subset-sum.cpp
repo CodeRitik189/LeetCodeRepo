@@ -1,16 +1,28 @@
 class Solution {
 public:
-    int check(vector<int>& arr, int sum,int& ts,int n,vector<unordered_map<int,int>>& dp){
-        if(n<0||sum>(ts+1)/2){return false;}
-        if(n==0){return 2*sum==ts;}
-        if(dp[n].find(sum)!=dp[n].end()){return dp[n][sum];}
-        return dp[n][sum] = (check(arr,sum,ts,n-1,dp)||check(arr,sum+arr[n-1],ts,n-1,dp));
-    }
     bool canPartition(vector<int>& arr) {
-        int n = arr.size();
-        vector<unordered_map<int,int>>dp(n+1);
-        int ts = 0;
-        for(int i=0;i<n;i++){ts += arr[i];}
-        return ts%2==0&&check(arr,0,ts,n,dp);
+        
+    int n = arr.size(), k = 0;
+    for(int i=0;i<n;i++){ k += arr[i]; }
+    
+    if(k%2 != 0)return false;
+    k /=   2;
+        
+        
+    vector<vector<int>> dp(n+1,vector<int>(k+1,-1));    
+    for(int i = 0; i<= k; i++){
+        dp[0][i] = 0;
+    }
+    
+    dp[0][0] = 1;
+    
+    for(int i=1;i<=n;i++){
+        for(int j = 0; j<=k ;j++){
+            dp[i][j] = (dp[i-1][j]);
+            if(j>=arr[i-1])
+              dp[i][j] |= dp[i-1][j-arr[i-1]];
+        }
+    }
+      return dp[n][k];
     }
 };
