@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<double>>dp;
+    vector<vector<int>>dp;
     int check(string& s, string& t, int i, int j){
         if(j==t.size()||i==s.size()){
             return (j==t.size());
@@ -15,21 +15,20 @@ public:
     }
     int numDistinct(string s, string t) {
        int m = s.size(), n = t.size();
-       dp = vector<vector<double>>(s.size()+1,vector<double>(t.size()+1,0));
+       vector<double>dp(n+1,0);
+       dp[0] = 1;
       // return check(s,t,0,0);
       
-      for(int i=0;i<=m;i++){
-          dp[i][0] = 1;
-      }
-    
       for(int i=1;i<=m;i++){
+          vector<double>temp(n+1,0);
           for(int j=0;j<=n;j++){
-              dp[i][j] = dp[i-1][j];
+              temp[j] = dp[j];
               if(j>0&&s[i-1]==t[j-1]){
-                  dp[i][j] += dp[i-1][j-1];
+                  temp[j] += dp[j-1];
               }
           }
+          dp = temp;
       }
-        return (int)dp[m][n];
+        return (int)dp[n];
     }
 };
