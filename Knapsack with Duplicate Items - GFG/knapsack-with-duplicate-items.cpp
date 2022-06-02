@@ -12,7 +12,8 @@ public:
    int check(int w, int wt[], int val[], int& n,int i,vector<vector<int>>& dp){
         if(i==n){return 0;}
         if(dp[i][w]!=-1){return dp[i][w];}
-        dp[i][w] = w-wt[i]>=0?max(max(check(w-wt[i],wt,val,n,i+1,dp),check(w-wt[i],wt,val,n,i,dp))+val[i],check(w,wt,val,n,i+1,dp)):check(w,wt,val,n,i+1,dp);
+        dp[i][w] = w-wt[i]>=0?max(check(w-wt[i],wt,val,n,i,dp)+val[i],
+        check(w,wt,val,n,i+1,dp)):check(w,wt,val,n,i+1,dp);
         return dp[i][w];
     }
     int knapSack(int n, int w, int val[], int wt[])
