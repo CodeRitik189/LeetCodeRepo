@@ -14,18 +14,20 @@ public:
     }
     int change(int amt, vector<int>& coins) {
         int n = coins.size();
-//         vector<int>dp(amt+1,INT_MAX);
+       // dp = vector<vector<int>>(n,vector<int>(amt+1,-1));
+        //return check(coins,0,amt);
+        vector<vector<int>>dp(n+1,vector<int>(amt+1,0));
         
-//         dp[0] = 0;
+        for(int i=0; i<= amt; i++){ dp[0][i] = 0;}
+        for(int i=0; i<= n; i++){ dp[i][0] = 1;}
         
-//         for(int i = 1; i<= amt ;i++){
-//             for(int j = 0; j< n; j++){
-//                if(i>=coins[j] && dp[i-coins[j]]!=INT_MAX)
-//                  dp[i] = min(dp[i],1+dp[i-coins[j]]);
-//             }
-//         }
-        //return dp[amt]==INT_MAX ? -1 : dp[amt];
-        dp = vector<vector<int>>(n,vector<int>(amt+1,-1));
-        return check(coins,0,amt);
+        for(int i = 1; i<= n ;i++){
+            for(int j = 0; j<= amt; j++){
+               dp[i][j] = dp[i-1][j];
+               if(j>=coins[i-1] )
+                 dp[i][j] += dp[i][j-coins[i-1]];
+            }
+        }
+        return dp[n][amt];
     }
 };
