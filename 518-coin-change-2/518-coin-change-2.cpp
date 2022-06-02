@@ -16,18 +16,20 @@ public:
         int n = coins.size();
        // dp = vector<vector<int>>(n,vector<int>(amt+1,-1));
         //return check(coins,0,amt);
-        vector<vector<int>>dp(n+1,vector<int>(amt+1,0));
+        vector<int>dp(amt+1,0);
         
-        for(int i=0; i<= amt; i++){ dp[0][i] = 0;}
-        for(int i=0; i<= n; i++){ dp[i][0] = 1;}
+        for(int i=0; i<= amt; i++){ dp[i] = 0;}
+        dp[0] =1;
         
         for(int i = 1; i<= n ;i++){
+            vector<int>temp(amt+1,0);
             for(int j = 0; j<= amt; j++){
-               dp[i][j] = dp[i-1][j];
+               temp[j] = dp[j];
                if(j>=coins[i-1] )
-                 dp[i][j] += dp[i][j-coins[i-1]];
+                 temp[j] += temp[j-coins[i-1]];
             }
+            dp = temp;
         }
-        return dp[n][amt];
+        return dp[amt];
     }
 };
