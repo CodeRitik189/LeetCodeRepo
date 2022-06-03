@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // best trick ever for this qn
     int maxProfit(vector<int>& prices) {
         int n = prices.size(),ans = 0;
         
