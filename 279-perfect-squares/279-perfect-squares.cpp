@@ -10,7 +10,7 @@ public:
 //         return dp[n][idx] = min(check(n,idx-1),1+check(n-ps[idx],idx));
 //     }
     int numSquares(int n) {
-         vector<int>ps;
+        vector<int>ps;
         for(int i=1; i*i <= n ;i++){
             ps.push_back(i*i);
         } 
