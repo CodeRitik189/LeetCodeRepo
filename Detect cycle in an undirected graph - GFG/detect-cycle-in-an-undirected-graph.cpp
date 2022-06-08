@@ -7,12 +7,13 @@ class Solution {
   public:
     // Function to detect cycle in an undirected graph.
     bool check(vector<int> vm[],int sc,int prev,vector<int>& vis){
-        if(vis[sc]){return true;}
-        vis[sc]=true;
+        if(vis[sc]==2){return true;}
+        if(vis[sc]==1){return false;}
+        vis[sc]=2;
         for(int i=0;i<vm[sc].size();i++){
             if(vm[sc][i]!=prev&&check(vm,vm[sc][i],sc,vis)){return true;}
         }
-        vis[sc]=false;
+        vis[sc]=1;
         return false;
     }
     bool isCycle(int V, vector<int> adj[]) {
