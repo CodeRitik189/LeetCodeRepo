@@ -17,9 +17,7 @@ class Solution
 	    v.push_back(sv);
 	}
 	
-	vector<int> topoSort(int V, vector<int> adj[]) 
-	{
-	    // code here
+	vector<int>SortDFS(int V, vector<int> adj[]){
 	    vector<int>vis(V,0);
 	    vector<int>v;
 	    
@@ -28,6 +26,43 @@ class Solution
 	     
 	    reverse(v.begin(),v.end()); 
 	    return v;
+	}
+	
+	vector<int> SortBFS(int V, vector<int> adj[]){
+	    vector<int>ans;
+	    vector<int>indg(V,0);
+	    queue<int>q;
+	    
+	    for(int i=0;i<V;i++){
+	        for(int j=0; j<adj[i].size(); j++){
+	            indg[adj[i][j]]++;
+	        }
+	    }
+	    
+	    for(int i=0;i<V;i++){
+	        if(indg[i]==0){ q.push(i); }
+	    }
+	    
+	    while(!q.empty()){
+	        int t = q.front();
+	        q.pop();
+	        ans.push_back(t);
+            
+            for(int i= 0; i<adj[t].size();i++){
+                indg[adj[t][i]]--;
+                if(indg[adj[t][i]]==0){
+                    q.push(adj[t][i]);
+                }
+            }
+	    }
+	    return ans;
+	}
+	
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    // return SortDFS(V,adj);
+	    return SortBFS(V,adj);
 	}
 };
 
