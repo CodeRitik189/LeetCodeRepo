@@ -30,7 +30,7 @@ class Solution
         int findNum(int n)
         {
         //complete the function here
-          return find(5,n*10,n);
+          return find(5,n*5,n);
         }
 };
 
