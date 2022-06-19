@@ -126,9 +126,8 @@ struct Node
 //Function to return the maximum difference between any node and its ancestor.
 
 int diff(Node* root, int mx){
-    if(!root){ return INT_MIN; }
-   int ans = max(mx-root->data,max(diff(root->left,max(root->data,mx)),diff(root->right,max(root->data,mx))));
-   return ans;
+   if(!root){ return INT_MIN; }
+   return max(mx-root->data,max(diff(root->left,max(root->data,mx)),diff(root->right,max(root->data,mx))));
 }
 
 int maxDiff(Node* root)
