@@ -127,8 +127,6 @@ vector<int> diagonal(Node *root)
    vector<int>ans;
    
    queue<Node*>q; 
-   Node* cur = root;
-   
    q.push(root);
    
    while(!q.empty()){
