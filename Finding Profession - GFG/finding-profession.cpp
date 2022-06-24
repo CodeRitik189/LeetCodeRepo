@@ -10,14 +10,11 @@ using namespace std;
 class Solution{
 public:
     bool  find(int level, long pos, char ch){
-        if(pos == 1){
-            return ch == 'e';
-        }
+        if(pos == 1){ return ch == 'e'; }
         if(pos %2 == 0 ){
             return ch=='d' ? find(level-1,(pos+1)/2 ,'e') : find(level-1, (pos+1)/2,'d');
-        }else{
-            return ch=='d' ? find(level-1,(pos+1)/2 ,'d') : find(level-1,(pos+1)/2 ,'e');
         }
+        return find(level-1,(pos+1)/2 ,ch); 
     }
     char profession(int level, int pos){
         // code here
