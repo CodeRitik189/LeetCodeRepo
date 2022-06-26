@@ -19,10 +19,12 @@ class Solution
             return;
         }
         
-        for(int i = idx; i<s.size(); i++){
-           if(s[idx]<=s[i]){
+        check(s,idx+1,k);
+        
+        for(int i = idx+1; i<s.size(); i++){
+           if(s[idx]<s[i]){
              swap(s[idx],s[i]);
-             check(s,idx+1,i!=idx ? k-1 : k);
+             check(s,idx+1,k-1);
              swap(s[idx],s[i]);
            }
         }
