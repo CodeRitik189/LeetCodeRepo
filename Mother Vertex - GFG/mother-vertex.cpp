@@ -9,28 +9,36 @@ class Solution
 {
     public:
     //Function to find a Mother Vertex in the Graph.
-    int dfs(vector<int>vm[], int sv,  vector<int>& vis){
-        vis[sv] = true;
-         int ct = 0;
+    void dfs(vector<int>vm[], int sv,  vector<int>& vis){
+        vis[sv] = 1;
         for(int i = 0; i<vm[sv].size(); i++){
             if(!vis[vm[sv][i]]){
-               ct +=  dfs(vm,vm[sv][i],vis);
+                dfs(vm,vm[sv][i],vis);
             }
         }
-        return ct+1;
     }
+    
 	int findMotherVertex(int n, vector<int>adj[])
 	{
 	    // Code here
 	    vector<int>vis(n,0);
+	    int v = 0;
 	    for(int i = 0; i<n; i++){
             if(!vis[i]){
-               if(dfs(adj, i, vis)==n){
-                   return i;
-               }
+               dfs(adj,i,vis);
+               v = i;
             }
         }
-        return -1;
+        
+        vis = vector<int>(n,0);
+        dfs(adj,v,vis);
+
+        for(int i = 0; i<n; i++){
+            if(vis[i]==false){
+                return -1;
+            }
+        }
+        return v;
 	}
 
 };
