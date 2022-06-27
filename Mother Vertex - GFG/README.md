@@ -1,5 +1,5 @@
 # Mother Vertex
-## Easy 
+##  Easy 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a Directed Graph, find a Mother Vertex in the Graph (if present).&nbsp;<br>
 A Mother Vertex is a vertex through which we can reach all the other vertices of the Graph.</span><br>
