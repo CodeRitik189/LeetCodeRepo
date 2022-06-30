@@ -9,7 +9,7 @@ using namespace std;
 
 class Solution{
 public:
-    //just 
+    //just dfs through the boundary O's
     void dfs(vector<vector<char>>& mat,int i, int j){
         if(i<0||j<0||i>=mat.size()||j>=mat[0].size()||mat[i][j]!='O'){
             return;
