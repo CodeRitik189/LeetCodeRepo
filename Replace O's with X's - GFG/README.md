@@ -1,5 +1,5 @@
 # Replace O's with X's
-## Medium 
+##  Medium 
 <div class="problem-statement">
                 <p></p><p><span style="font-size:18px">Given a matrix <strong>mat</strong> of size <strong>N x M</strong> where every element is either ‘O’ or ‘X’.<br>
 Replace all ‘O’ with ‘X’ that are surrounded by ‘X’.<br>
