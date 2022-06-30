@@ -23,8 +23,6 @@ public:
     vector<vector<char>> fill(int n, int m, vector<vector<char>> mat)
     {
         // code here
-        vector<vector<int>>vis(n,vector<int>(m,0));
-        
         for(int i = 0; i<n ; i++){
             if(mat[i][0]=='O'){
                 dfs(mat,i,0);
