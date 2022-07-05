@@ -1,29 +1,33 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        int i=0,j=0,ans=0;
-        // vector<int>v(256,0);
+        // int i=0,j=0,ans=0;
+        // unordered_map<int,int>um;
         // while(i<s.size()){
-        //     if(v[s[i]]>0){
-        //         v[s[j]]--;
-        //         j++; 
+        //     if(um.find(s[i])!=um.end()&&um[s[i]]>=j){
+        //         j = um[s[i]]+1;
         //     }else{
-        //         v[s[i]]++;
+        //         um[s[i]] = i;
         //         ans = max(ans,i-j+1);
         //         i++;
         //     }
         // }
         // return ans;
-        unordered_map<int,int>um;
-        while(i<s.size()){
-            if(um.find(s[i])!=um.end()&&um[s[i]]>=j){
-                j = um[s[i]]+1;
-            }else{
-                um[s[i]] = i;
-                ans = max(ans,i-j+1);
-                i++;
-            }
+        
+        int n = s.size(), ans = 0, j = 0;
+    
+        vector<int>hash(256,0);
+        
+        for(int i = 0 ; i<n;){
+                if(j<i && hash[s[i]]>0){
+                    hash[s[j]]--;
+                    j++;
+                }else{
+                    hash[s[i]]++;
+                    ans = max(ans,i-j+1);
+                    i++;
+                }     
         }
-        return ans;
+        return ans;      
     }
 };
