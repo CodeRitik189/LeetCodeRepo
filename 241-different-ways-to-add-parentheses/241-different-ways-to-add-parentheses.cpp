@@ -4,11 +4,11 @@ public:
     vector<int> find(string& s, int st, int endi){
         if(st==endi)return {s[st]-'0'};
         if(st==endi-1)return {(s[st]-'0')*10+(s[endi]-'0')};
+        if(dp[st][endi].size()!=0)return dp[st][endi];
         
         vector<int>ans;
         for(int i = st+1; i<endi;i++){
             if( s[i]!='*'&&s[i]!='+'&&s[i]!='/'&&s[i]!='-')continue;
-            if(dp[st][endi].size()!=0)return dp[st][endi];
             
             vector<int>v1 = find(s,st,i-1);
             vector<int>v2 = find(s,i+1,endi);
