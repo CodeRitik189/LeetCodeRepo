@@ -1,18 +1,20 @@
 class Solution {
 public:
-    int lengthOfLongestSubstring(string s) {        
+    int lengthOfLongestSubstring(string s) {  
+        if(s.size()==0)return 0;
          int ans = 0;
          
-        for(int i = 0; i<s.size(); i++){
-             bool flag = true;
-             vector<int>v(256,0);
-            for(int j = i; j<s.size();j++){
-                //entered in a substring from i to j
-                if(v[s[j]]>0){
-                    break;
-                }
-                ans = max(ans,j-i+1);
-                v[s[j]]++;
+        vector<int>v(256,0);
+        int i = 0, j = 0;
+        
+        while(i<s.size()){
+            if(j<i&&v[s[i]]>0){
+                v[s[j]]--;
+                j++;
+            }else{
+                v[s[i]]++;
+                ans = max(ans,i-j+1);
+                i++;
             }
         }
         return ans;
