@@ -23,7 +23,7 @@ class Solution{
         
         int prev = A[N-1]-1, ans = 0;
         for(int i = N-1; i >= 0; i--){
-            if(i<N-1 && A[i] <= prev)continue;
+            if(A[i] <= prev)continue;
             while(!st.empty() && st.top().second>=i){
                 st.pop();
             }
