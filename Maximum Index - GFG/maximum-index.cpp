@@ -21,9 +21,8 @@ class Solution{
             }
         }
         
-        int prev = A[N-1]-1, ans = 0;
+        int ans = 0;
         for(int i = N-1; i >= 0; i--){
-            if(A[i] <= prev)continue;
             while(!st.empty() && st.top().second>=i){
                 st.pop();
             }
@@ -35,7 +34,6 @@ class Solution{
                    st.pop();
                }
             }
-            prev = A[i];
         }
         return ans;
     }
