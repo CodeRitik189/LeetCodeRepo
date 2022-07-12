@@ -26,13 +26,9 @@ class Solution{
             while(!st.empty() && st.top().second>=i){
                 st.pop();
             }
-            if(st.empty()){
-               return ans;
-            }else{
-               while(!st.empty()&&st.top().first<=A[i]){
-                   ans = max(ans,i-st.top().second);
-                   st.pop();
-               }
+            while(!st.empty()&&st.top().first<=A[i]){
+                ans = max(ans,i-st.top().second);
+                st.pop();
             }
         }
         return ans;
